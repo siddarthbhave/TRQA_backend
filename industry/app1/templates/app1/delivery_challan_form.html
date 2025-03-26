@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delivery Challan Form</title>
+</head>
+<body>
+    <h2>Delivery Challan Form</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ form.as_p }}
+
+        <!-- DeliveryChallanTools formset -->
+        {{ formset.management_form }}
+        <table id="tools-formset">
+            {% for form in formset %}
+            {{ form.as_table }}
+            {% endfor %}
+        </table>
+
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

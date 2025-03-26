@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Service Order</title>
+</head>
+<body>
+    <h1>Delete Service Order</h1>
+    <p>Are you sure you want to delete the service order with ID '{{ service_order.service_id }}'?</p>
+    <form method="post" action="{% url 'service_order_delete' service_order.service_id %}">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+    
+</body>
+</html>

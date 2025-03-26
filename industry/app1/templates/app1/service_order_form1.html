@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Service Order Form</title>
+</head>
+<body>
+    <h1>Service Order Form</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ order_form.as_p }}
+        
+        <h2>Service Tool Details</h2>
+        {% for form in tool_forms %}
+            {{ form.as_p }}
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+    
+</body>
+</html>

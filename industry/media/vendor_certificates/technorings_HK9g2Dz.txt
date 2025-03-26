@@ -1,0 +1,92 @@
+#technorings 13/03/24
+
+mysql> DESC Vendor;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| vendor_id   | int          | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(24)  | YES  |     | NULL    |                |
+| location    | varchar(16)  | YES  |     | NULL    |                |
+| address     | varchar(64)  | YES  |     | NULL    |                |
+| phone_number| varchar(10)  | YES  |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+
+mysql> DESC ToolDetails;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| tool_id     | int          | NO   | PRI | NULL    | auto_increment |
+| tool_name   | varchar(24)  | YES  |     | NULL    |                |
+| tool_period | int          | YES  |     | NULL    |                |
+| vendor_id   | int          | YES  | MUL | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+
+mysql> DESC UsingTool;
++-------------------------+--------------+------+-----+---------+----------------+
+| Field                   | Type         | Null | Key | Default | Extra          |
++-------------------------+--------------+------+-----+---------+----------------+
+| usingtool_id            | int          | NO   | PRI | NULL    | auto_increment |
+| usingtool_name          | varchar(24)  | YES  |     | NULL    |                |
+| tool_id                 | int          | YES  | MUL | NULL    |                |
+| last_service_date       | date         | YES  |     | NULL    |                |
+| next_service_date       | date         | YES  |     | NULL    |                |
+| last_implementation     |     datetime | YES  |     | NULL    |                |
+| notification_date       | date         | YES  |     | NULL    |                |
+| manufacturer            | varchar(24)  | YES  |     | NULL    |                |
+| tool_range              | varchar(12)  | YES  |     | NULL    |                |
+| list_count              | int          | YES  |     | NULL    |                |
+| vendor_id               | int          | YES  | MUL | NULL    |                |
++-------------------------+--------------+------+-----+---------+----------------+
+
+mysql> DESC ShedDetails;
++-------------+--------------+------+-----+---------+----------------+
+| Field       | Type         | Null | Key | Default | Extra          |
++-------------+--------------+------+-----+---------+----------------+
+| shed_id     | int          | NO   | PRI | NULL    | auto_increment |
+| name        | varchar(24)  | YES  |     | NULL    |                |
+| location    | varchar(16)  | YES  |     | NULL    |                |
+| phone_number| varchar(10)  | YES  |     | NULL    |                |
++-------------+--------------+------+-----+---------+----------------+
+
+mysql> DESC ShedTools;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| shedtool_id  | int          | NO   | PRI | NULL    | auto_increment |
+| shed_id      | int          | YES  | MUL | NULL    |                |
+| using_tool_id| int          | YES  | MUL | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+
+mysql> DESC ShedVendors;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| shedvendor_id| int          | NO   | PRI | NULL    | auto_increment |
+| shed_id      | int          | YES  | MUL | NULL    |                |
+| vendor_id    | int          | YES  | MUL | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+
+mysql> DESC VendorHandles;
++--------------+--------------+------+-----+---------+----------------+
+| Field        | Type         | Null | Key | Default | Extra          |
++--------------+--------------+------+-----+---------+----------------+
+| vendorhandle_id| int         | NO   | PRI | NULL    | auto_increment |
+| vendor_id    | int          | YES  | MUL | NULL    |                |
+| tool_id      | int          | YES  | MUL | NULL    |                |
+| turnaround_time| int        | YES  |     | NULL    |                |
+| cost         | decimal(10,2)| YES  |     | NULL    |                |
++--------------+--------------+------+-----+---------+----------------+
+
+mysql> DESC VendorHandled;
++-----------------+--------------+------+-----+---------+----------------+
+| Field           | Type         | Null | Key | Default | Extra          |
++-----------------+--------------+------+-----+---------+----------------+
+| vendorhandled_id| int          | NO   | PRI | NULL    | auto_increment |
+| vendor_id       | int          | YES  | MUL | NULL    |                |
+| using_tool_id   | int          | YES  | MUL | NULL    |                |
+| received_date   | date         | YES  |     | NULL    |                |
+| out_to_delivery_date| date     | YES  |     | NULL    |                |
++-----------------+--------------+------+-----+---------+----------------+
+
+
+

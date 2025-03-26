@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Delivery Challan</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Delivery Challan</h1>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        {{ delivery_challan_form.as_p }}
+        
+        <h2>Calibration Details</h2>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Calibration Date:</td>
+                    <td><input type="text" name="calibration_date"></td>
+                </tr>
+                <tr>
+                    <td>Calibration Report No:</td>
+                    <td><input type="text" name="calibration_report_no"></td>
+                </tr>
+                <tr>
+                    <td>Calibration Agency:</td>
+                    <td><input type="text" name="calibration_agency"></td>
+                </tr>
+                <tr>
+                    <td>Result:</td>
+                    <td><input type="text" name="result"></td>
+                </tr>
+                <tr>
+                    <td>Action:</td>
+                    <td><input type="text" name="action"></td>
+                </tr>
+                <tr>
+                    <td>Remark:</td>
+                    <td><input type="text" name="remark"></td>
+                </tr>
+                <tr>
+                    <td>Calibration Report File:</td>
+                    <td><input type="file" name="calibration_report_file"></td>
+                </tr>
+                <tr>
+                    <td>Calibration Report File 2:</td>
+                    <td><input type="file" name="calibration_report_file2"></td>
+                </tr>
+            </tbody>
+        </table>
+    
+        <h2>Tool Details</h2>
+            
+            <label for="instrument_dropdown">Select Instrument:</label>
+            <select name="instrument" id="instrument_dropdown">
+                {% for instrument in instruments %}
+                    <option value="{{ instrument.instrument_no }}">{{ instrument.instrument_name }}</option>
+                {% endfor %}
+            </select>
+    
+            <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

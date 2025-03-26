@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shed Details</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 10px;
+        }
+        th, td {
+            border: 1px solid black;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Shed Details</h1>
+    <h2>Shed Information</h2>
+    <table>
+        <tbody>
+            <tr>
+                <th>Shed ID</th>
+                <td>{{ shed.shed_id }}</td>
+            </tr>
+            <tr>
+                <th>Name</th>
+                <td>{{ shed.name }}</td>
+            </tr>
+            <tr>
+                <th>Location</th>
+                <td>{{ shed.location }}</td>
+            </tr>
+            <tr>
+                <th>Phone Number</th>
+                <td>{{ shed.phone_number }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <h2>Shed Tools</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Tool ID</th>
+                <th>Tool Name</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for shed_tool in shed_tools %}
+            <tr>
+                <td>{{ shed_tool.using_tool.instrument_no }}</td>
+                <td>{{ shed_tool.using_tool.instrument_name }}</td>
+            </tr>
+            {% empty %}
+            <tr>
+                <td colspan="2">No tools available in this shed.</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

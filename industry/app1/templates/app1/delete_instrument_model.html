@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Delete Instrument Model</title>
+</head>
+<body>
+    <h1>Delete Instrument Model</h1>
+    <p>Are you sure you want to delete {{ instrument_model }}?</p>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+</body>
+</html>

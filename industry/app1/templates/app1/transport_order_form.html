@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Transport Order</title>
+</head>
+<body>
+    <h1>Add Transport Order</h1>
+    <form method="post">
+        {% csrf_token %}
+        {{ order_form.as_p }}
+        <h2>Transport Tools</h2>
+        {% for tool_form in tool_forms %}
+            {{ tool_form.as_p }}
+        {% endfor %}
+        <button type="submit">Submit</button>
+    </form>
+</body>
+</html>

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Generate Bill</title>
+</head>
+<body>
+    <h1>Bill for Service Order</h1>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Tool</th>
+                <th>Service Type</th>
+                <th>Cost</th>
+                <th>Amount</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for item in bill_items %}
+                <tr>
+                    <td>{{ item.tool.instrument_name }}</td>
+                    <td>{{ item.service_type }}</td>
+                    <td>{{ item.cost }}</td>
+                    <td>{{ item.amount }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    <h2>Total Amount: {{ total_amount }}</h2>
+</body>
+</html>

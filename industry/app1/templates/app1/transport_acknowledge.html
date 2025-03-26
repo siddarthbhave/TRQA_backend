@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transport Acknowledgment</title>
+</head>
+<body>
+    <h1>Transport Acknowledgment</h1>
+    <h2>Transport Order Details:</h2>
+    <p>Order ID: {{ transport_order.movement_id }}</p>
+    <p>Movement Date: {{ transport_order.movement_date }}</p>
+    <p>Source Shed: {{ transport_order.source_shed }}</p>
+    <p>Destination Shed: {{ transport_order.destination_shed }}</p>
+    <p>Tool Count: {{ transport_order.tool_count }}</p>
+    <h2>Transport Tools:</h2>
+    <ul>
+        {% for tool in transport_order.transporttools_set.all %}
+            <li>Tool ID: {{ tool.tool.instrument_no }} - Name: {{ tool.tool.instrument_name }}</li>
+        {% endfor %}
+    </ul>
+    <form method="post">
+        {% csrf_token %}
+        <input type="submit" value="Acknowledge">
+    </form>
+</body>
+</html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Transport Acknowledgment</title>
+</head>
+<body>
+    <h1>Transport Order: {{ transport_order.movement_id }}</h1>
+    <h2>Tools to Acknowledge</h2>
+    <form method="post" action="{% url 'transport_acknowledge_tools' transport_order.movement_id %}">
+        {% csrf_token %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Select</th>
+                    <th>Tool ID</th>
+                    <th>Tool Name</th>
+                    <th>Remarks</th>
+                    <th>Acknowledgment</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for tool in transport_order.transporttools_set.all %}
+                <tr>
+                    <td>
+                        <input type="checkbox" name="tool_ids" value="{{ tool.tool.instrument_no }}" {% if tool.acknowledgment %}checked disabled{% endif %}>
+                    </td>
+                    <td>{{ tool.tool.instrument_no }}</td>
+                    <td>{{ tool.tool.instrument_name }}</td>
+                    <td>{{ tool.tool_movement_remarks }}</td>
+                    <td>{{ tool.acknowledgment }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+        <button type="submit">Acknowledge Selected Tools</button>
+    </form>
+</body>
+</html>

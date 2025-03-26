@@ -1,0 +1,52 @@
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instrument Service History</title>
+</head>
+<body>
+    <h1>Instrument Transport History</h1>
+    <h2>Instrument Details:</h2>
+    <p>Instrument No: {{ instrument.instrument_no }}</p>
+    <p>Instrument Name: {{ instrument.instrument_name }}</p>
+    <p>Manufacturer Name: {{ instrument.manufacturer_name }}</p>
+    <p>Year of Purchase: {{ instrument.year_of_purchase }}</p>
+    <p>GST: {{ instrument.gst }}</p>
+    <p>Description: {{ instrument.description }}</p>
+    <p>Instrument Range: {{ instrument.instrument_range }}</p>
+    <p>Least Count: {{ instrument.least_count }}</p>
+    <p>Type of Tool: {{ instrument.type_of_tool }}</p>
+    <p>Calibration Frequency: {{ instrument.calibration_frequency }}</p>
+
+    <h2>Service History:</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Service ID</th>
+                <th>Date</th>
+                <th>Amount</th>
+                <th>Description</th>
+                <th>Tool Count</th>
+                <th>Vendor</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in service_history %}
+            <tr>
+                <td>{{ entry.service.service_id }}</td>
+                <td>{{ entry.service.date }}</td>
+                <td>{{ entry.service.amount }}</td>
+                <td>{{ entry.service.description }}</td>
+                <td>{{ entry.service.tool_count }}</td>
+                <td>{{ entry.vendor }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+
+</body>
+</html>

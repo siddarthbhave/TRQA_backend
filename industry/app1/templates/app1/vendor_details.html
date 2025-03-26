@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vendor Details</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        h1, h2 {
+            margin-bottom: 10px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+    </style>
+</head>
+<body>
+    <h1>Vendor Details</h1>
+    <h2>Vendor Information</h2>
+    <p>Vendor ID: {{ vendor.vendor_id }}</p>
+    <p>Name: {{ vendor.name }}</p>
+    <p>Location: {{ vendor.location }}</p>
+    <!-- Add more vendor details as needed -->
+
+    <h2>Tool Handles</h2>
+    <table>
+        <thead>
+            <tr>
+                <th>Tool Name</th>
+                <th>Turnaround Time</th>
+                <th>Cost</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for handle in vendor_handles %}
+            <tr>
+                <td>{{ handle.tool.instrument_name }}</td>
+                <td>{{ handle.turnaround_time }}</td>
+                <td>{{ handle.cost }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>

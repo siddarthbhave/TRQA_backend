@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Delete Delivery Challan</title>
+</head>
+<body>
+    <h1>Delete Delivery Challan</h1>
+    <p>Are you sure you want to delete the delivery challan with ID: {{ delivery_challan.deliverychallan_id }}?</p>
+    <form action="{% url 'delete_delivery_challan' delivery_challan.deliverychallan_id %}" method="post">
+        {% csrf_token %}
+        <input type="submit" value="Delete">
+    </form>
+</body>
+</html>

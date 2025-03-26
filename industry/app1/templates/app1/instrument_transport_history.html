@@ -1,0 +1,85 @@
+{% comment %} <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instrument Transport History</title>
+</head>
+<body>
+    <h1>Instrument Transport History</h1>
+    <h2>Instrument: {{ instrument.instrument_no }}</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Transport ID</th>
+                <th>Movement Date</th>
+                <th>Source Shed</th>
+                <th>Destination Shed</th>
+                <th>Acknowledgment</th>
+                <th>Tool Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in transport_history %}
+            <tr>
+                <td>{{ entry.movement.movement_id }}</td>
+                <td>{{ entry.movement.movement_date }}</td>
+                <td>{{ entry.movement.source_shed }}</td>
+                <td>{{ entry.movement.destination_shed }}</td>
+                <td>{{ entry.movement.acknowledgment }}</td>
+                <td>{{ entry.movement.tool_count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html> {% endcomment %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instrument Transport History</title>
+</head>
+<body>
+    <h1>Instrument Transport History</h1>
+    <h2>Instrument Details:</h2>
+    <p>Instrument No: {{ instrument.instrument_no }}</p>
+    <p>Instrument Name: {{ instrument.instrument_name }}</p>
+    <p>Manufacturer Name: {{ instrument.manufacturer_name }}</p>
+    <p>Year of Purchase: {{ instrument.year_of_purchase }}</p>
+    <p>GST: {{ instrument.gst }}</p>
+    <p>Description: {{ instrument.description }}</p>
+    <p>Instrument Range: {{ instrument.instrument_range }}</p>
+    <p>Least Count: {{ instrument.least_count }}</p>
+    <p>Type of Tool: {{ instrument.type_of_tool }}</p>
+    <p>Calibration Frequency: {{ instrument.calibration_frequency }}</p>
+
+    <h2>Transport History:</h2>
+    <table border="1">
+        <thead>
+            <tr>
+                <th>Transport ID</th>
+                <th>Movement Date</th>
+                <th>Source Shed</th>
+                <th>Destination Shed</th>
+                <th>Acknowledgment</th>
+                <th>Tool Count</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for entry in transport_history %}
+            <tr>
+                <td>{{ entry.transport.movement_id }}</td>
+                <td>{{ entry.transport.movement_date }}</td>
+                <td>{{ entry.transport.source_shed }}</td>
+                <td>{{ entry.transport.destination_shed }}</td>
+                <td>{{ entry.transport.acknowledgment }}</td>
+                <td>{{ entry.transport.tool_count }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
