@@ -29,7 +29,7 @@ class VendorTypeView(APIView):
         return Response({'vendor_types': serializer.data})
 
 
-@method_decorator(csrf_exempt, name='dispatch')
+# @method_decorator(csrf_exempt, name='dispatch')
 class InstrumentToolsView(APIView):
     def get(self, request):
         instruments = InstrumentModel.objects.all()
