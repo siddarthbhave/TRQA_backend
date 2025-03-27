@@ -25,8 +25,7 @@ SECRET_KEY = "django-insecure-26qgev0r(s=pnzi3hx66s1pn@bi8ue%o3&vl-4o_==w6_xzcpc
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['practicehost.pythonanywhere.com', 'techno-rings.vercel.app',
-                 '127.0.0.1', '*', 'ec2-44-202-186-76.compute-1.amazonaws.com']
+ALLOWED_HOSTS = ['*', '127.0.0.1', 'ec2-44-202-186-76.compute-1.amazonaws.com']
 
 
 # Application definition
@@ -135,9 +134,9 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 CORS_ALLOW_ALL_ORIGINS = True
 
 CORS_ALLOWED_ORIGINS = [
+    "http://ec2-44-202-186-76.compute-1.amazonaws.com",
     "http://localhost:8000",
     "http://localhost:5173",
     "http://localhost:3000",
-    "https://techno-rings.vercel.app",
+    "http://127.0.0.1:3000"
 ]
-
